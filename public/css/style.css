@@ -1,0 +1,309 @@
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --bg-light: #f9fafb;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Navbar */
+  .navbar {
+    background-color: #1B2A4E;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .search-bar {
+    flex: 1;
+    display: flex;
+    margin: 0 1rem;
+    max-width: 600px;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .search-bar button {
+    background: white;
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-weight: bold;
+  }
+.search-bar :hover{
+  background-color: white;
+}
+  .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-icons a {
+    color: #1B2A4E;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: bold
+  }
+   .btn1{
+    background-color: #FFD45C;
+    color:#1B2A4E;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+  } 
+  .btn1:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .nav-icons .signup {
+    background-color: #FFD45C;
+    color:#1B2A4E;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  .signup:hover{
+    background-color: var(--primary-dark);
+  }
+
+.navbar-2 {
+  background-color: hsl(238, 94%, 6%);
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+    gap: 30px;
+    top: 0;
+    font-weight: bold;
+  
+}
+
+.navbar-2 .login {
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.navbar-2 .login:hover {
+  background-color: #1f2937;
+  color: white;
+  text-decoration: none
+}
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #eef2ff;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+  }
+
+  .hero p {
+    color: var(--text-light);
+    margin: 1rem 0;
+  }
+
+  .hero a {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #FFD45C;
+    color: #1B2A4E;
+     padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: background 0.3s;
+    font-weight: bold;
+  }
+
+  .hero a:hover {
+    background-color: var(--primary-dark);
+  }
+
+  /* Discover */
+  .discover {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .discover h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1B2A4E;
+    margin-bottom: 2rem;
+  }
+
+  .book-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .book-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .book-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .book-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .book-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
+  /* Footer */
+  footer {
+    background-color: #1B2A4E;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    margin-bottom: 0.5rem;
+  }
+
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+
+  .social-icons a {
+    margin: 0 0.5rem;
+    color: white;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #c7d2fe;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .search-bar {
+      margin: 1rem 0;
+      width: 100%;
+    }
+
+    .nav-icons {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+/* bookDetails page */
+.back-btn{
+  text-decoration: none;
+  color: #007bff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.back-btn:hover{
+  text-decoration: underline;
+}
+.book-detail-card{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px;
+  max-width: 1000px;
+  margin:  0 auto;
+  gap: 30px;
+}
+.book-image {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.book-info{
+  flex: 1;
+}
+.book-info h1{
+  font-size: 28px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.book-info p{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.btn{
+  background-color: #FFD45C;
+    color:#1B2A4E;
+  display: inline-block;
+  padding: 10px 16px;
+  text-decoration: none;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+
+}
+.btn:hover{
+  background-color: var(--primary-dark);
+}

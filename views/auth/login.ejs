@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Bookify</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <div class="container">
+      <div class="login-box glass-effect">
+        <button type="button" class="google-btn" onclick="window.location.href='/auth/google'">
+          <i class="fab fa-google"></i> Continue with Google
+        </button>
+
+        <h2>Login to <span class="brand">Bookify</span></h2>
+
+        <form action="/login" method="POST" class="login-form">
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Enter your email" required />
+
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="Enter your password" required />
+
+          <button type="submit" class="login-btn">Login</button>
+
+          <div class="forgot">
+            <a href="/auth/forgot-password">Forgot Password?</a>
+          </div>
+
+          <div class="signup-bottom">
+            Don’t have an account?
+            <a href="/auth/signup">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
