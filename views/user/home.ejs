@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/header') %>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">Bookify</div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search by Books Name  Author  Title ..."/>
+        <button>Search</button>
+      </div>
+
+      <div class="nav-icons">
+        <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
+        <a href="/login" class="btn1">Login</a>
+        <a href="/signup" class="signup"><i class="fas fa-user"></i> Sign Up</a>
+      </div>
+    </nav>
+     <nav class="navbar-2">
+      <a href="#" class="login">Home</a>
+      <a href="#" class="login">About Us</a>
+      <a href="#" class="login">Contact us</a>
+     </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to Bookify</h1>
+      <p>Discover, Read & Buy your favorite books</p>
+      <a href="#discover" class="Explore">Explore Now</a>
+    </section>
+
+    <!-- Discover Section -->
+    <section class="discover" id="discover">
+      <h2>Popular Books</h2>
+      <div class="book-grid">
+        <% if (books.length === 0) { %>
+          <p id="nobook">No books available right now.</p>
+        <% } else { %>
+          <% books.forEach(book => { %>
+            <div class="book-card">
+              <!-- <img src="<%= book.image %>" alt="<%= book.title %>" /> -->
+              <img src=" <%= book.coverImage %>" alt="Book Cover" width="200">
+              <!-- <pre><%= JSON.stringify(book, null,2) %></pre> -->
+              <h3><%= book.title %></h3>
+              <p>by <%= book.author %></p>
+              <p> <%= book.decription %></p>
+              <p><%= book.price %></p>
+              <p><%= book.categories %></p>
+              <a href="/bookDetails/<%=book._id %>">View Details</a>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+
+  </body>
+</html>
