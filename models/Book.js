@@ -10,20 +10,30 @@ const bookSchema = new mongoose.Schema({
     required:true
     },
     description:{
-        type: String
+        type: String,
+        required: true 
         },
      coverImage:{
-            type: String
+            type: String,
+            required: true 
             },
-            categories:{
-                type: String
+            language:{
+                type: String,
+                required: true 
             },
-            description:{
-                type: String
+            pages:{
+                type: String,
+                required: true 
+            },
+             genre:{
+                type: String,
+                required: true 
             },
             price:{
-                type: Number
+                type: Number,
+                required: true 
                 },
+                
     
 });
 
