@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../partials/header') %>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>Bookify | Add Book</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
+  <!-- Navbar -->
+  <nav class="admin-nav">
+    <div class="logo"> Bookify Admin</div>
+    <ul>
+      <li><a href="/admin/dashboard">Dashboard</a></li>
+      <li><a href="/admin/addBook">Add Book</a></li>
+      <li><a href="/admin/allBooks">All Books</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Form Section -->
+  <div class="form-container">
+    <h2>Add New Book</h2>
     <form action="/admin/newBook" method="POST" enctype="multipart/form-data">
-        <label>Title:</label>
-        <input type="text" name="title" required /><br/>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" required>
 
-        <label>Author:</label>
-        <input type="text" name="author" required /><br/>
+          <label>Author</label>
+          <input type="text" name="author" required>
 
-        <label>Description:</label>
-        <textarea name="description"></textarea><br/>
-<!-- 
-        <label>Image URL:</label>
-        <input type="text" name="image" /><br/> -->
+          <label>Description</label>
+          <textarea name="description" rows="4"></textarea>
 
-        <input type="file" name="coverImage" accept="image/*" required>
-        <label>Genre:</label>
-        <input type="text" name="genre"/><br/>
-        <label>Language:</label>
-        <input type="text" name="language"/><br/>
-        <label>pages:</label>
-        <input type="text" name="pages"/><br/>
+          <label>Cover Image</label>
+          <input type="file" name="coverImage" required>
+        </div>
 
-        <label>Price:</label>
-        <input type="number" step="0.01" name="price" /><br/>
+        <div class="form-group">
+          <label>Genre</label>
+          <input type="text" name="genre">
 
-        <button type="submit">Add Book</button>
+          <label>Language</label>
+          <input type="text" name="language">
+
+          <label>Pages</label>
+          <input type="number" name="pages">
+
+          <label>Price (₹)</label>
+          <input type="number" step="0.01" name="price">
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Add Book</button>
     </form>
-
-    <%- include('../partials/footer') %>
+  </div>
 
 </body>
 </html>

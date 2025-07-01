@@ -3,3 +3,28 @@
 <title>Bookify | Home</title>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Bookify</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by Books Name  Author  Title ..."/>
+      <button>Search</button>
+    </div>
+    <div class="nav-icons">
+        <% if (user) { %>
+      <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
+      <a href="/logout" class="btn1">Logout</a>
+      <a href="/profile" class="signup"><i class="fas fa-user"></i> Profile</a>
+      <span>Hello, <%= user.name %></span>
+       <% } else { %>
+        <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
+        <a href="/auth/login" class="btn1">Login</a>
+        <a href="/auth/signup" class="signup"><i class="fas fa-user"></i> Sign Up</a>
+       <% } %>
+    </div>
+  </nav>
+   <nav class="navbar-2">
+    <a href="#" class="login">Home</a>
+    <a href="#" class="login">About Us</a>
+    <a href="#" class="login">Contact us</a>
+   </nav>

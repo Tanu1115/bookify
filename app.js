@@ -7,7 +7,7 @@ const app = express();
 // routes
 const userRouter = require ('./routes/userRouter');
 const authRouter = require('./routes/authRouter')
-const adminRouter = require('./routes/adminRoutes')
+const adminRouter = require('./routes/adminRouter')
 const Book = require("./models/Book");
 
 //connected to db
@@ -25,7 +25,7 @@ app.set('views',path.join(__dirname,'views'));
 
 app.use('/',userRouter);
 app.use('/auth',authRouter);
-app.use('/admin',adminRouter)
+app.use('/admin',adminRouter);
 
 const PORT = process.env.PORT || 3000;
     app.listen(3000,()=>{

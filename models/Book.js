@@ -11,7 +11,7 @@ const bookSchema = new mongoose.Schema({
     },
     description:{
         type: String,
-        required: true 
+    
         },
      coverImage:{
             type: String,
@@ -23,11 +23,10 @@ const bookSchema = new mongoose.Schema({
             },
             pages:{
                 type: String,
-                required: true 
+        
             },
              genre:{
                 type: String,
-                required: true 
             },
             price:{
                 type: Number,
