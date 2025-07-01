@@ -1,0 +1,149 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  /* Navbar */
+  .admin-nav {
+    background-color: #1e293b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-nav .logo {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  .admin-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+  
+  .admin-nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: border-bottom 0.2s ease;
+  }
+  
+  .admin-nav ul li a:hover {
+    border-bottom: 2px solid white;
+  }
+  
+  /* Form Layout */
+  .form-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 35px 45px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .form-container h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    text-align: center;
+    color: #222;
+  }
+  
+  /* Form Grid */
+  .form-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .form-group {
+    flex: 1;
+    min-width: 260px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #4f46e5;
+    outline: none;
+  }
+  
+  input[type="file"] {
+    padding: 5px 0;
+  }
+  
+  /* Button */
+  .submit-btn {
+    margin-top: 30px;
+    width: 100%;
+    padding: 12px;
+    background-color: #4f46e5;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #3730a3;
+  }
+  
+  /* Footer */
+  .admin-footer {
+    margin-top: 60px;
+    background-color: #1e293b;
+    color: white;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 14px;
+    border-top: 1px solid #374151;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .form-grid {
+      flex-direction: column;
+    }
+  
+    .form-container {
+      padding: 25px 20px;
+      margin: 30px 10px;
+    }
+  }
+  
