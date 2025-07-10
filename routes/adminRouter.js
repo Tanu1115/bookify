@@ -8,7 +8,7 @@ const multer = require('multer');
 const uploads = multer({storage})
 
 router.get("/books/new", (req, res) => {
-    res.render("admin/addBook");
+    res.render('admin/addbook',{title: 'Add Book'});
 });
 router.post('/newBook',uploads.single('coverImage'),addBook); 
 

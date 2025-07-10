@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Bookify</title>
+  <link rel="stylesheet" href="/css/auth.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="split-layout">
+     <!-- Left Image Section --> 
+    <div class="left-side">
+      <img src="/images/bookcover.jpg" alt="Books" /> 
+    </div> 
+
+    <!-- Right Login Section -->
+    <div class="right-side">
+      <div class="login-box glass-effect">
+        
+        <button type="button" class="google-btn" onclick="window.location.href='/auth/google'">
+          <img src="/images/google-icon.png" alt="Google icon" />
+          Continue with Google
+        </button>
+
+        <h2>Login to <span class="brand">Bookify</span></h2>
+
+        <form action="/auth/signup" method="POST" class="login-form">
+          <label for="name">Name</label>
+          <input type="name" name="name" placeholder="Username" required />
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Enter your email" required />
+
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="password" required />
+          
+          <button type="submit" class="login-btn">signup</button>
+    
+  </div>
+</form>
+</body>
+</html>

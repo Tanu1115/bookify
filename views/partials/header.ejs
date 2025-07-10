@@ -11,13 +11,14 @@
       <button>Search</button>
     </div>
     <div class="nav-icons">
+      <!-- <p>🧠 User from EJS: <%= user ? user.name : "No user" %></p> -->
         <% if (user) { %>
       <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
       <a href="/logout" class="btn1">Logout</a>
       <a href="/profile" class="signup"><i class="fas fa-user"></i> Profile</a>
-      <span>Hello, <%= user.name %></span>
+      <!-- <span>Hello, <%= user.name %></span> -->
        <% } else { %>
-        <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
+        <!-- <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a> -->
         <a href="/auth/login" class="btn1">Login</a>
         <a href="/auth/signup" class="signup"><i class="fas fa-user"></i> Sign Up</a>
        <% } %>
