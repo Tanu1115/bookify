@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Bookify | Add Book</title>
-  <link rel="stylesheet" href="/css/admin.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <!-- Navbar -->
-  <nav class="admin-nav">
-    <div class="logo"> Bookify Admin</div>
-    <ul>
-      <li><a href="/admin/dashboard">Dashboard</a></li>
-      <li><a href="/admin/addBook">Add Book</a></li>
-      <li><a href="/admin/allBooks">All Books</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-  </nav>
-
-  <!-- Form Section -->
+<%- include('../partials/adminheader') %>
+  <!-- Add Book Form Container -->
   <div class="form-container">
-    <h2>Add New Book</h2>
     <form action="/admin/newBook" method="POST" enctype="multipart/form-data">
       <div class="form-grid">
+        <!-- Left Column -->
         <div class="form-group">
           <label>Title</label>
           <input type="text" name="title" required>
@@ -34,10 +14,11 @@
           <label>Description</label>
           <textarea name="description" rows="4"></textarea>
 
-          <label>Cover Image</label>
-          <input type="file" name="coverImage" required>
+          <label>Upload Cover Image</label>
+          <input type="file" name="coverImage" accept="image/*" required>
         </div>
 
+        <!-- Right Column -->
         <div class="form-group">
           <label>Genre</label>
           <input type="text" name="genre">
@@ -49,13 +30,13 @@
           <input type="number" name="pages">
 
           <label>Price (₹)</label>
-          <input type="number" step="0.01" name="price">
+          <input type="number" name="price" step="0.01">
         </div>
       </div>
 
       <button type="submit" class="submit-btn">Add Book</button>
     </form>
   </div>
-
+   <%- include('../partials/adminfooter') %>
 </body>
 </html>

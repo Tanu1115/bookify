@@ -13,14 +13,14 @@
   
   /* Navbar */
   .admin-nav {
-    background-color: #1e293b;
+    background-color: #1B2A4E;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 40px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: bold;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -45,7 +45,7 @@
   }
   
   .admin-nav ul li a:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #FFD45C;
   }
   
   /* Form Layout */
@@ -110,10 +110,10 @@
     margin-top: 30px;
     width: 100%;
     padding: 12px;
-    background-color: #4f46e5;
-    color: white;
+    background-color: #FFD45C;
+    color: #1B2A4E;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -144,6 +144,75 @@
     .form-container {
       padding: 25px 20px;
       margin: 30px 10px;
+    }
+  }
+  /* footer */
+  .admin-footer {
+    background-color: #1B2A4E;
+    color: #cbd5e1;
+    padding: 2rem 2rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 3rem;
+  }
+  
+  .admin-footer .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 1.5rem;
+  }
+  
+  .footer-section h4 {
+    color: #facc15;
+    margin-bottom: 0.6rem;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .footer-section p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 15px;
+    transition: color 0.3s;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #facc15;
+    font-weight: bold;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    color: #94a3b8;
+  }
+  
+  .footer-bottom strong {
+    color: #facc15;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .admin-footer .footer-top {
+      flex-direction: column;
     }
   }
   

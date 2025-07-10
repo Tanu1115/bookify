@@ -197,6 +197,7 @@
     width: 100%;
     height: auto;
     margin-bottom: 1rem;
+    
   }
 
   .book-card h3 {
@@ -214,6 +215,7 @@
     color: white;
     padding: 2rem;
     text-align: center;
+    font-size: 18px;
   }
 
   footer p {
@@ -227,7 +229,7 @@
   .social-icons a {
     margin: 0 0.5rem;
     color: white;
-    font-size: 1.2rem;
+    font-size: 22px;
     transition: color 0.3s;
   }
 

@@ -1,33 +1,37 @@
 require ("dotenv").config();
 const express  = require('express');
-const path = require('path')
-const connectDB = require("./config/db")
+const path = require('path');
+const connectDB = require("./config/db");
+const cookiesParser = require('cookie-parser');
+const setUser = require('./middleware/setUser');
+
 const app = express();
 
-// routes
-const userRouter = require ('./routes/userRouter');
-const authRouter = require('./routes/authRouter')
-const adminRouter = require('./routes/adminRouter')
-const Book = require("./models/Book");
-
-//connected to db
+// Connect to DB
 connectDB();
 
-//Middleware
-app.use(express.urlencoded({extended:true}));
-app.use(express.json())
-//Public css folder
+// Middleware (in correct order)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookiesParser());         // ✅ Cookie parser comes first
+app.use(setUser);                 // ✅ Then setUser middleware
+
+// Set static folder and views
 app.use(express.static("public"));
-
-//html and ejs folder path 
 app.set('view engine', 'ejs');
-app.set('views',path.join(__dirname,'views'));
+app.set('views', path.join(__dirname, 'views'));
 
-app.use('/',userRouter);
-app.use('/auth',authRouter);
-app.use('/admin',adminRouter);
+// Routes
+const userRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
+const adminRouter = require('./routes/adminRouter');
 
+app.use('/', userRouter);
+app.use('/auth', authRouter);
+app.use('/admin', adminRouter);
+
+// Start server
 const PORT = process.env.PORT || 3000;
-    app.listen(3000,()=>{
-        console.log(`server running on this addres http://localhost:${PORT}`);
-    });
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
