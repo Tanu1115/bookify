@@ -1,0 +1,27 @@
+<%- include('../partials/adminheader') %>
+<div class="edit-book-container">
+  <h2>Edit Book</h2>
+  <form action="/admin/books/<%= book._id %>/edit" method="POST" enctype="multipart/form-data">
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= book.title %>" required>
+    <input type="file" name="coverImage" />
+    <label>Author:</label>
+    <input type="text" name="author" value="<%= book.author %>" required>
+
+    <label>Price (₹):</label>
+    <input type="number" name="price" value="<%= book.price %>" required>
+
+    <label>Genre:</label>
+    <input type="text" name="genre" value="<%= book.genre %>" required>
+
+    <label>Description:</label>
+    <textarea name="description" rows="4" required><%= book.description %></textarea>
+
+    <label>Language:</label>
+    <input type="text" name="language" value="<%= book.language %>">
+
+    <button type="submit">Update Book</button>
+  </form>
+</div>
+
+<%- include('../partials/adminfooter') %>

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Bookify</title>
+  <link rel="stylesheet" href="/css/cart.css" />
+  <%- include('../partials/header') %>
+</head>
+
+<body>
+  <div class="cart-container">
+    <h2>Your Shopping Cart</h2>
+
+    <% if (cart && cart.items.length > 0) { 
+        let totalAmount = 0;
+    %>
+      <div class="cart-list">
+        <% cart.items.forEach(item => { 
+            const itemTotal = item.bookId.price * item.quantity;
+            totalAmount += itemTotal;
+        %>
+          <div class="cart-item">
+            <img src="<%= item.bookId.coverImage %>" alt="<%= item.bookId.title %>"/>
+            
+            <div class="item-details">
+              <h3><%= item.bookId.title %></h3>
+              <p>by <%= item.bookId.author %></p>
+              <p>Price: ₹<%= item.bookId.price %></p>
+
+              <p><strong>Subtotal:</strong> ₹<%= itemTotal %></p>
+
+              <form action="/cart/remove/<%= item.bookId._id %>" method="POST">
+                <button class="remove-btn" type="submit">Remove</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="cart-summary">
+        <h3>Total Amount: ₹<%= totalAmount %></h3>
+        <a href="/checkout" class="checkout-btn">Proceed to Checkout</a>
+        <a href="/" class="continue-btn">← Continue Shopping</a>
+      </div>
+
+    <% } else { %>
+      <p class="empty-cart">Your cart is empty </p>
+      <a href="/" class="btn">Go Back to Home</a>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

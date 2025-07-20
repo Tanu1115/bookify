@@ -12,8 +12,7 @@ const getHomePage = async (req, res) => {
     console.log("DB error:", err);
     res.status(500).send("Something went wrong");
   }
-};
-
+}
 // 📖 GET: Book Details Page
 const getbookdetails = async (req, res) => {
   try {
@@ -35,5 +34,5 @@ const getbookdetails = async (req, res) => {
 
 module.exports = {
   getHomePage,
-  getbookdetails
+  getbookdetails,
 };

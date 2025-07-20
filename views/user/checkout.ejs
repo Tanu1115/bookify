@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout | Bookify</title>
+  <link rel="stylesheet" href="/css/checkout.css" />
+  <%- include('../partials/header') %>
+</head>
+<body>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+    <form action="/checkout" method="POST" class="checkout-form">
+      
+      <!-- Customer Details -->
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <!-- Shipping Address -->
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required>
+
+      <label for="pincode">Pincode</label>
+      <input type="text" id="pincode" name="pincode" required>
+
+      <label for="state">State</label>
+      <input type="text" id="state" name="state" required>
+
+      <label for="country">Country</label>
+      <input type="text" id="country" name="country" value="India" required>
+
+      <!-- Cart Items -->
+      <h3>Your Cart</h3>
+      <ul class="cart-summary">
+        <% let total = 0; %>
+        <% cart.items.forEach(item => {
+          total += item.bookId.price * item.quantity;
+        %>
+          <li>
+            <span><%= item.bookId.title %> × <%= item.quantity %></span>
+            <span>₹<%= item.bookId.price * item.quantity %></span>
+          </li>
+        <% }) %>
+      </ul>
+
+      <!-- Total Price -->
+      <div class="total">
+        Total: ₹<%= total %>
+      </div>
+
+      <!-- Payment Method -->
+      <label>Payment Method</label>
+      <div class="payment-options">
+        <label>
+          <input type="radio" name="payment" value="cod" checked>
+          Cash on Delivery
+        </label>
+        <label>
+          <input type="radio" name="payment" value="online">
+          Online Payment
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn-place-order">Place Order</button>
+    </form>
+  </div>
+  <%- include('../partials/footer') %>
+</body>
+</html>

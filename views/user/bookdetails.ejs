@@ -4,50 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title><%= book.title %> | Bookify</title>
-  <link rel="stylesheet" href="/css/style.css" />
   <%- include('../partials/header') %>
 </head>
 
 <body>
-  <!-- Back Button -->
-  <a href="/" class="back-btn">← Back to Home</a>
+  <main class="book-detail-wrapper">
+    <div class="book-detail-container">
 
-  <!-- Book Detail Card -->
-  <div class="book-detail-card">
-    <!-- Book Image -->
-    <div class="book-image">
-      <img src="<%= book.coverImage %>" alt="<%= book.title %> Cover" />
+      <!-- Book Image -->
+      <div class="book-detail-image">
+        <img src="<%= book.coverImage %>" alt="<%= book.title %> Cover" />
+      </div>
+
+      <!-- Book Info -->
+      <div class="book-detail-content">
+        <h1><%= book.title %></h1>
+        <h3>By <%= book.author %></h3>
+        <p class="price">₹ <%= book.price %></p>
+
+        <ul class="book-meta">
+          <li><strong>Genre:</strong> <%= book.genre %></li>
+          <li><strong>Language:</strong> <%= book.language %></li>
+          <li><strong>Pages:</strong> <%= book.pages %></li>
+        </ul>
+
+        <p class="description"><%= book.description %></p>
+
+        <!-- Buttons -->
+        <div class="action-buttons">
+          <% if (user) { %>
+            <form action="/add-to-cart/<%= book._id %>" method="POST">
+              <button type="submit" class="btn">🛒 Add to Cart</button>
+            </form>
+            <form action="/buy-now/<%= book._id %>" method="POST">
+              <button type="submit" class="btn btn-secondary">⚡ Buy Now</button>
+            </form>
+            <!-- <a href="/checkout/<%= book._id %>" class="btn btn-secondary">⚡ Buy Now</a> -->
+          <% } else { %>
+            <a href="/auth/login" class="btn">Login to Buy</a>
+            <a href="/auth/login" class="btn btn-secondary">Add to Cart</a>
+          <% } %>
+        </div>
+      </div>
     </div>
-
-    <!-- Book Info -->
-    <div class="book-info">
-      <h1><%= book.title %></h1>
-      <h3>By <%= book.author %></h3>
-      <p><strong>Price:</strong> ₹<%= book.price %></p>
-      <p><strong>Genre:</strong><%= book.genre %></p>
-       <p><strong>Language:</strong> <%= book.language %></p>
-       <p><strong>Pages:</strong> <%= book.pages %></p>
-      <p><strong>Description:</strong></p>
-      <p><%= book.description %></p>
-
-      <!-- User Actions -->
-      <% if (user) { %>
-        <form action="/cart/add/<%= book._id %>" method="POST" style="display:inline-block;">
-          <button type="submit" class="btn">🛒 Add to Cart</button>
-        </form>
-
-        <form action="/buy/<%= book._id %>" method="POST" style="display:inline-block;">
-          <button type="submit" class="btn">⚡ Buy Now</button>
-        </form>
-      <% } else { %>
-        <a href="/auth/login" class="btn"> Login to Buy</a>
-        <a href="/auth/login" class="btn"> Add to Cart</a>
-      <% } %>
-    </div>
-  </div>
+  </main>
 
   <%- include('../partials/footer') %>
 </body>
 </html>
-
-

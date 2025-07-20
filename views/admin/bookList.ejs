@@ -1,0 +1,37 @@
+<%- include('../partials/adminheader') %>
+<link rel="stylesheet" href="/css/adminBooks.css" />
+
+<div class="container">
+  <h2>All Books</h2>
+
+  <a href="/admin/books/new" class="add-book-btn">+ Add New Book</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% books.forEach(book => { %>
+        <tr>
+          <td data-label="Title"><%= book.title %></td>
+          <td data-label="Author"><%= book.author %></td>
+          <td data-label="Price">₹<%= book.price %></td>
+          <td data-label="Actions">
+            <!-- <a href="/admin/books/<%= book._id %>" class="view-btn">View</a> -->
+            <a href="/admin/books/<%= book._id %>/edit" class="edit-btn">Edit</a>
+            <form action="/admin/books/<%= book._id %>/delete" method="POST" style="display:inline;">
+              <button onclick="return confirm('Delete this book?')" class="delete-btn" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/adminfooter') %>
