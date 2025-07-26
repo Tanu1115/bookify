@@ -31,8 +31,28 @@ const getbookdetails = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+const getContactPage = (req,res) =>{
+  res.render('user/contact')
+};
 
+const postContactPage = (req,res) =>{
+  const {name, email, message } = req.body
+  console.log("Conatct from received", {name, emai, message
+}) ;
+res.send('Thank you for contacting us')
+};
+const getthankyou = (req,res) =>{
+  res.render('user/thankyou')
+};
+
+const getAboutPage =  (req,res) =>{
+  res.render('user/about')
+}
 module.exports = {
   getHomePage,
   getbookdetails,
+  getContactPage,
+  postContactPage,
+  getAboutPage,
+  getthankyou
 };

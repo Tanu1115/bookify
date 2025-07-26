@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Contact Us | Bookify</title>
+</head>
+<body>
+
+  <!-- ✅ Minimal Navbar -->
+  <nav class="contact-navbar">
+    <div class="logo">Bookify</div>
+    <div class="search-box">
+      <input type="text" placeholder="Search for books..." />
+    </div>
+    <div class="profile-icon">
+      <i class="fas fa-user-circle"></i>
+    </div>
+  </nav>
+
+  <!-- ✅ Contact Page Container -->
+  <div class="contact-page-container">
+
+    <h1 class="main-heading">How can we help you?</h1>
+
+    <!-- ✅ Contact Cards Section -->
+    <div class="contact-card-section">
+
+      <div class="contact-card">
+        <h2>Track Orders</h2>
+        <p>Check order status, delivery updates & history.</p>
+        <button>Track Now</button>
+      </div>
+
+      <div class="contact-card">
+        <h2>Returns  Refunds</h2>
+        <p>Return a book or request a refund for a purchase.</p>
+        <button>Request Return</button>
+      </div>
+
+      <div class="contact-card">
+        <h2>Payments</h2>
+        <p>Need help with failed or duplicate payments?</p>
+        <button>Payment Support</button>
+      </div>
+
+      <div class="contact-card">
+        <h2>Other Queries</h2>
+        <p>Ask us anything related to your orders or books.</p>
+        <button>Get Help</button>
+      </div>
+
+    </div>
+
+    <!-- ✅ Message Form Section -->
+    <div class="form-section">
+      <h2>Still need help? Contact us</h2>
+      <!-- <form action="/contact" method="POST"> -->
+        <form action="https://formsubmit.co/tanukharwar1115@gmail.com" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" required />
+<!-- ✅ Add this inside the form -->
+<input type="hidden" name="_next" value="http://localhost:3000/thankyou">
+<input type="hidden" name="_captcha" value="false"> 
+        <label for="message">Message</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- ✅ Chat Section -->
+    <div class="chat-section">
+      <h2>Chat With Us</h2>
+      <p>We’re available 24/7 to help you with your queries.</p>
+      <button>Start Chat</button>
+    </div>
+
+  </div>
+  <%- include('../partials/footer') %>
+</body>
+</html>

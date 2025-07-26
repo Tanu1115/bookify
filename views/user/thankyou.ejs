@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You | Bookify</title>
+ <style>
+   body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  /* Animation Keyframes */
+  @keyframes fadeInZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .thank-you-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+
+    /* Animation Added */
+    animation: fadeInZoom 1s ease-out forwards;
+  }
+
+  .thank-you-box h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .thank-you-box p {
+    font-size: 18px;
+    color: #666;
+  }
+
+  .thank-you-box a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .thank-you-box a:hover {
+    background-color:gray;
+  }
+
+ </style>
+</head>
+<body>
+  <div class="thank-you-box">
+    <h1>Thank You!</h1>
+    <p>Your message has been received. We’ll get back to you soon.</p>
+    <a href="/">Return to Home</a>
+  </div>
+</body>
+</html>

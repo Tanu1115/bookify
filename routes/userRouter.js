@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getHomePage, getbookdetails } = require('../controllers/bookController');
+const { getHomePage, getbookdetails, getContactPage, postContactPage, getAboutPage, getthankyou} = require('../controllers/bookController');
 const { addToCart, getCartPage, getCheckoutPage, placeOrder, getOrderSuccessPage } = require('../controllers/CartController');
 
 // Home Page
@@ -24,6 +24,9 @@ router.post('/checkout', placeOrder);
 // ✅ Order Success Page (Fixed)
 router.get('/order/success', getOrderSuccessPage);
 
-
-
+//contact page
+router.get('/contact',getContactPage);
+router.post('/contact',postContactPage)
+router.get('/thankyou',getthankyou)
+router.get('/about',getAboutPage)
 module.exports = router;

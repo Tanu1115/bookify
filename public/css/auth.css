@@ -1,4 +1,4 @@
-/* ===== Reset & Font ===== */
+* ===== Reset & Font ===== */
 * {
   margin: 0;
   padding: 0;
@@ -134,4 +134,246 @@ body {
   text-align: center;
   margin-top: 15px;
   font-size: 14px;
+}
+
+/* login  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f0f2f5;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.login-left, .login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-left {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  animation: slideDown 1s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.form-box {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.form-box h2 {
+  margin: 1.2rem 0;
+  font-weight: 600;
+}
+
+.brand {
+  color: #5a47fa;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  gap: 10px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.google-btn:hover {
+  background: #f0f0f0;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.login-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin: 0.5rem 0 0.2rem;
+  font-weight: 500;
+}
+
+.login-form input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.login-btn {
+  margin-top: 1.2rem;
+  padding: 0.7rem;
+  background-color: #5a47fa;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.login-btn:hover{
+    background-color: grey;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+  }
+
+
+.forgot, .signup-bottom {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.forgot a, .signup-bottom a {
+  color: #5a47fa;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-right {
+  background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), 
+  url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+background-size: cover;
+  position: relative;
+}
+
+.login-right .overlay {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  text-align: center;
+  max-width: 500px;
+}
+
+.login-right h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.login-right p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-right {
+    display: none;
+  }
+
+  .login-left {
+    padding: 1rem;
+  }
+
+  .form-box {
+    padding: 1.5rem;
+  }
+}
+
+.forgot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+  padding: 1rem;
+}
+
+.forgot-box {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.forgot-box h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.forgot-box p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.forgot-box input[type="email"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.forgot-box button {
+  width: 100%;
+  background-color: #4A00E0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.forgot-box button:hover {
+  background-color: #5F27CD;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4A00E0;
+  text-decoration: none;
+  font-weight: bold;
 }

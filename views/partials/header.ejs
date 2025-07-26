@@ -7,14 +7,16 @@
 <nav class="navbar">
     <div class="logo">Bookify</div>
     <div class="search-bar">
-      <input type="text" placeholder="Search by Books Name  Author  Title ..."/>
-      <button>Search</button>
+      <input type="text" placeholder="Search by title, author, or category"/>
+      <button>
+        <i class="fas fa-search"></i>
+      </button>
     </div>
     <div class="nav-icons">
       <!-- <p>🧠 User from EJS: <%= user ? user.name : "No user" %></p> -->
         <% if (user) { %>
       <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
-      <a href="/logout" class="btn1">Logout</a>
+      <a href="/auth/logout" class="btn1">Logout</a>
       <a href="/profile" class="signup"><i class="fas fa-user"></i> Profile</a>
       <!-- <span>Hello, <%= user.name %></span> -->
        <% } else { %>
@@ -26,6 +28,6 @@
   </nav>
    <nav class="navbar-2">
     <a href="/" class="login">Home</a>
-    <a href="about.ejs" class="login">About Us</a>
-    <a href="#" class="login">Contact us</a>
+    <a href="about" class="login">About Us</a>
+    <a href="contact" class="login">Contact us</a>
    </nav>

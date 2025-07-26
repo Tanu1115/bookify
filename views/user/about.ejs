@@ -1,1 +1,51 @@
+<%- include('../partials/header') %>
 
+<body>
+  <main class="about-container">
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <h1>About Bookify</h1>
+      <p>Your trusted online bookstore for everything from bestsellers to academic texts.</p>
+    </section>
+
+    <!-- About Details Section -->
+    <section class="about-details">
+      <h2>Who We Are</h2>
+      <p>Bookify is more than just a bookstore – it’s a community of readers, developers, and dreamers. 
+         Founded with a deep love for books and modern web technology, our goal is to bring the magic of books to your fingertips with ease and affordability.</p>
+
+      <h2>Our Mission</h2>
+      <p>We aim to make reading accessible and enjoyable for everyone. Whether you're a student, a professional, or a casual reader, 
+         Bookify has something for you. We are committed to promoting the culture of reading in the digital era.</p>
+
+      <h2>What We Offer</h2>
+      <ul>
+        <li>Thousands of books across all genres: fiction, non-fiction, self-help, biographies, academics, and more</li>
+        <li>Fast and secure checkout with multiple payment options</li>
+        <li>Affordable prices with seasonal offers and discounts</li>
+        <li>Personalized book suggestions based on your interests</li>
+        <li>Clean, user-friendly interface with detailed previews</li>
+      </ul>
+
+      <h2>Why Choose Bookify?</h2>
+      <p>We believe in building a platform that’s simple, fast, and delightful to use. With intuitive navigation, helpful customer support, 
+         and a constantly expanding catalog, Bookify is designed to become your favorite destination for books online.</p>
+
+      <p><strong>Let’s build a reading culture – one book at a time.</strong></p>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <h2>📬 Join Our Newsletter</h2>
+      <p>Stay updated with the latest book releases, discounts, and reading tips. Subscribe now and never miss a story!</p>
+      
+      <form action="/subscribe" method="POST" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
