@@ -9,10 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="right-side">
-    <div class="login-box glass-effect">
-      
-      <button type="button" class="google-btn" onclick="window.location.href='/auth/google'">
+  <div class="login-container">
+    <div class="login-left slide-down">
+      <div class="form-box">
+      <button class="google-btn" onclick="window.location.href='/auth/google'">
         <img src="/images/google-icon.png" alt="Google icon" />
         Continue with Google
       </button>
@@ -37,6 +37,13 @@
       </form>
     </div>
   </div>
+  <div class="login-right">
+    <div class="overlay">
+      <h1>Welcome Back!</h1>
+      <p>Discover a world of books on <strong>Bookify</strong></p>
+    </div>
+  </div>
 
+</div>
 </body>
 </html>

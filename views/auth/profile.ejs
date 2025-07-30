@@ -1,0 +1,48 @@
+
+
+<%- include('../partials/header') %>
+
+
+
+<main class="profile-wrapper">
+  <aside class="profile-sidebar">
+    <div class="profile-user">
+      <img src="<%= user.profileImage || '/images/default-avatar.png' %>" alt="Profile Image">
+      <h2><%= user.name %></h2>
+      <p><%= user.email %></p>
+    </div>
+
+    <nav class="profile-nav">
+      <a href="/profile/orders"><i class="fas fa-box"></i> My Orders</a>
+      <a href="/profile/addresses"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a>
+      <a href="/user/cart"><i class="fas fa-shopping-cart"></i> Saved Carts</a>
+      <a href="/profile/edit"><i class="fas fa-user-edit"></i> Edit Profile</a>
+      <a href="/auth/logout" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <section class="profile-main">
+    <div class="welcome-banner">
+      <h1>Hello, <%= user.name %> 👋</h1>
+      <p>Welcome back to your Bookify Dashboard.</p>
+    </div>
+
+    <div class="profile-stats">
+      <div class="stat-card">
+        <h3><%= ordersCount %></h3>
+        <p>Total Orders</p>
+      </div>
+      <div class="stat-card">
+        <h3><%= orderCarts || 0 %></h3>
+        <p>Saved Items</p>
+      </div>
+      <div class="stat-card">
+        <h3>₹<%= credit || 0 %></h3>
+        <p>Credit Limit</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+

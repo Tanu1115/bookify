@@ -1,37 +1,52 @@
 const express = require('express');
-const router = express.Router();
-const Middleware = require('../middleware/authmiddleware');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+
 const {
-  getLogin,
-  postLogin,
-  getSignup,
-  postSignup,
-  logout,
-  getForgotPassword,
-  postForgotPassword,
-  getResetPassword,
-  postResetPassword
-} = require('../controllers/authController');
+  getLogin, postLogin,getSignup, postSignup,logout, getForgotPassword,
+   postForgotPassword,getResetPassword, postResetPassword, googleLogin, getProfile, getUserCart} = require('../controllers/authController');  // ⛔ Removed googleCallback
 
-// Login
-router.get("/login", getLogin);
-router.post("/login", postLogin);
+const router = express.Router();
 
-// Signup
-router.get("/signup", getSignup);
-router.post("/signup", postSignup);
+router.get('/login', getLogin);
+router.post('/login', postLogin);
 
-// Logout
-router.get("/logout", logout);
+router.get('/signup', getSignup);
+router.post('/signup', postSignup);
 
-// Forgot Password
-router.get("/forgot", getForgotPassword);       // show email form
-router.post("/forgot", postForgotPassword);     // send reset link
+router.get('/logout', logout);
 
-// Reset Password
-router.get("/reset/:token", getResetPassword);  // show new password form
-router.post("/reset/:token", postResetPassword); // handle password update
+// Forgot / Reset Password
+router.get('/forgot', getForgotPassword);
+router.post('/forgot', postForgotPassword);
+router.get('/reset/:token', getResetPassword);
+router.post('/reset/:token', postResetPassword);
+
+// profile 
+router.get('/profile',getProfile)
+// router.get('/user/carts', getUserCart); // 👈 this should exist
+
+
+// ✅ Google OAuth Routes
+router.get('/google', googleLogin);
+
+// ✅ Google Callback is handled inline here — not in controller
+router.get('/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/auth/login',
+    session: true
+  }),
+  (req, res) => {
+    const token = jwt.sign(
+      { userId: req.user._id.toString() },
+      process.env.JWT_SECRET,
+      { expiresIn: '12h' }
+    );
+
+    res.cookie('token', token, { httpOnly: true });
+    res.redirect('/');
+  }
+);
+
 
 module.exports = router;
-
-

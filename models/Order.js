@@ -1,37 +1,31 @@
-
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  userId: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
-  name: {
-    type: String,
-    required: true
-  },
-  address: {
-    type: String,
-    required: true
-  },
-  items: [
+  books: [
     {
-      bookId: {
+      book: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book',
-        required: true
+        ref: 'Book'
       },
       quantity: {
         type: Number,
-        required: true,
-        min: 1
+        default: 1
       }
     }
   ],
-  total: {
+  totalAmount: {
     type: Number,
     required: true
+  },
+  status: {
+    type: String,
+    enum: ['Placed', 'Processing', 'Shipped', 'Delivered'],
+    default: 'Placed'
   },
   createdAt: {
     type: Date,
@@ -39,4 +33,7 @@ const orderSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Order', orderSchema);
+// ✅ Prevent OverwriteModelError
+const Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
+
+module.exports = Order;

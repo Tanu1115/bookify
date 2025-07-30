@@ -1,3 +1,4 @@
+
 const Book = require('../models/Book');
 const Cart = require('../models/Cart');
 const Order = require('../models/Order');
@@ -77,22 +78,24 @@ const placeOrder = async (req, res) => {
       return res.redirect('/cart');
     }
 
-    let total = 0;
-    cart.items.forEach(item => {
-      total += item.bookId.price * item.quantity;
+    let totalAmount = 0;
+    const books = cart.items.map(item => {
+      totalAmount += item.bookId.price * item.quantity;
+      return {
+        book: item.bookId._id,
+        quantity: item.quantity
+      };
     });
 
     const order = new Order({
-      userId: res.locals.user._id,
-      name,
-      address,
-      items: cart.items,
-      total
+      user: res.locals.user._id,
+      books,
+      totalAmount
     });
 
     await order.save();
 
-    // ✅ Clear cart items instead of deleting the whole cart
+    // ✅ Clear cart
     cart.items = [];
     await cart.save();
 
@@ -103,14 +106,12 @@ const placeOrder = async (req, res) => {
   }
 };
 
-
+// 5️⃣ Order Success Page
 const getOrderSuccessPage = (req, res) => {
   res.render('user/ordersuccess');
 };
-//Buy now
 
-
-// ✅ Export all
+// ✅ Export
 module.exports = {
   addToCart,
   getCartPage,
