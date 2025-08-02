@@ -1,32 +1,39 @@
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { getHomePage, getbookdetails, getContactPage, postContactPage, getAboutPage, getthankyou} = require('../controllers/bookController');
-const { addToCart, getCartPage, getCheckoutPage, placeOrder, getOrderSuccessPage } = require('../controllers/CartController');
+const {
+  getHomePage,
+  getbookdetails,
+  getContactPage,
+  postContactPage,
+  getAboutPage,
+  getthankyou,
+} = require("../controllers/bookController");
 
-// Home Page
-router.get('/', getHomePage);
+const {
+  addToCart,
+  getCartPage,
+  getCheckoutPage,
+  placeOrder,
+  getOrderSuccessPage,
+  createRazorpayOrder,
+  verifyPayment,
+} = require("../controllers/CartController");
 
-// Book Details
-router.get('/bookdetails/:id', getbookdetails);
+router.get("/", getHomePage);
+router.get("/bookdetails/:id", getbookdetails);
+router.post("/add-to-cart/:id", addToCart);
+router.get("/cart", getCartPage);
+router.get("/checkout", getCheckoutPage);
+router.post("/checkout", placeOrder);
+router.get("/order/success", getOrderSuccessPage);
 
-// Add to Cart
-router.post('/add-to-cart/:id', addToCart);
 
-// Cart Page
-router.get('/cart', getCartPage);
+// Contact Page
+router.get("/contact", getContactPage);
+router.post("/contact", postContactPage);
+router.get("/thankyou", getthankyou);
+router.get("/about", getAboutPage);
 
-// Checkout Page
-router.get('/checkout', getCheckoutPage);
-router.post('/checkout', placeOrder);
-
-// ✅ Order Success Page (Fixed)
-router.get('/order/success', getOrderSuccessPage);
-
-//contact page
-router.get('/contact',getContactPage);
-router.post('/contact',postContactPage)
-router.get('/thankyou',getthankyou)
-router.get('/about',getAboutPage)
 module.exports = router;

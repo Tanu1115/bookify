@@ -24,8 +24,9 @@ app.use(
     secret: process.env.SESSION_SECRET || "yourSecretKey", // 🔐 Put this in .env
     resave: false,
     saveUninitialized: false,
+    rolling: true,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      maxAge: 1000 * 60 * 24 * 30, // 1 day
     },
   })
 );
@@ -52,10 +53,13 @@ app.set('views', path.join(__dirname, 'views'));
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
 const adminRouter = require('./routes/adminRouter');
+const paymentRouter = require('./routes/paymentRouter');  // ✅ Fixes the error
+
 
 app.use('/', userRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
+app.use('/', paymentRouter);
 
 // Start Server
 const PORT = process.env.PORT || 3000;

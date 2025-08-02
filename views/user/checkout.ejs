@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout | Bookify</title>
-  <link rel="stylesheet" href="/css/checkout.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <%- include('../partials/header') %>
 </head>
 <body>
   <div class="checkout-container">
     <h1>Checkout</h1>
-    <form action="/checkout" method="POST" class="checkout-form">
-      
+
+    <form id="checkoutForm">
       <!-- Customer Details -->
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required>
@@ -22,7 +22,7 @@
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
 
-      <!-- Shipping Address -->
+      <!-- Address -->
       <label for="address">Address</label>
       <textarea id="address" name="address" rows="3" required></textarea>
 
@@ -38,7 +38,7 @@
       <label for="country">Country</label>
       <input type="text" id="country" name="country" value="India" required>
 
-      <!-- Cart Items -->
+      <!-- Cart Summary -->
       <h3>Your Cart</h3>
       <ul class="cart-summary">
         <% let total = 0; %>
@@ -57,7 +57,7 @@
         Total: ₹<%= total %>
       </div>
 
-      <!-- Payment Method -->
+      <!-- Payment Options -->
       <label>Payment Method</label>
       <div class="payment-options">
         <label>
@@ -70,10 +70,80 @@
         </label>
       </div>
 
-      <!-- Submit -->
+      <!-- Place Order -->
       <button type="submit" class="btn-place-order">Place Order</button>
     </form>
   </div>
+
   <%- include('../partials/footer') %>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    const form = document.getElementById('checkoutForm');
+
+    form.addEventListener('submit', async function (e) {
+      const paymentMethod = form.payment.value;
+
+      if (paymentMethod === 'online') {
+        e.preventDefault();
+
+        const formData = {
+          name: form.name.value,
+          phone: form.phone.value,
+          email: form.email.value,
+          address: form.address.value,
+          city: form.city.value,
+          pincode: form.pincode.value,
+          state: form.state.value,
+          country: form.country.value,
+          totalAmount: <%= total %>
+        };
+
+        const res = await fetch('/create-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+
+        const options = {
+          key: data.key_id,
+          amount: data.amount,
+          currency: "INR",
+          name: "Bookify",
+          description: "Book Purchase",
+          order_id: data.order.id,
+          handler: async function (response) {
+            const verifyRes = await fetch('/verify-payment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+                formData: formData
+              })
+            });
+
+            const result = await verifyRes.json();
+            if (result.success) {
+              alert('Payment successful!');
+              window.location.href = '/order-success';
+            } else {
+              alert('Payment failed. Try again.');
+            }
+          }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+      }
+    });
+  </script>
 </body>
 </html>
