@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Checkout | Bookify</title>
-  <link rel="stylesheet" href="/css/style.css" />
+
   <%- include('../partials/header') %>
 </head>
 <body>
@@ -12,7 +6,6 @@
     <h1>Checkout</h1>
 
     <form id="checkoutForm">
-      <!-- Customer Details -->
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required>
 
@@ -22,7 +15,6 @@
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
 
-      <!-- Address -->
       <label for="address">Address</label>
       <textarea id="address" name="address" rows="3" required></textarea>
 
@@ -38,7 +30,6 @@
       <label for="country">Country</label>
       <input type="text" id="country" name="country" value="India" required>
 
-      <!-- Cart Summary -->
       <h3>Your Cart</h3>
       <ul class="cart-summary">
         <% let total = 0; %>
@@ -52,32 +43,26 @@
         <% }) %>
       </ul>
 
-      <!-- Total Price -->
       <div class="total">
         Total: ₹<%= total %>
       </div>
 
-      <!-- Payment Options -->
       <label>Payment Method</label>
       <div class="payment-options">
         <label>
-          <input type="radio" name="payment" value="cod" checked>
-          Cash on Delivery
+          <input type="radio" name="payment" value="cod" checked> Cash on Delivery
         </label>
         <label>
-          <input type="radio" name="payment" value="online">
-          Online Payment
+          <input type="radio" name="payment" value="online"> Online Payment
         </label>
       </div>
 
-      <!-- Place Order -->
       <button type="submit" class="btn-place-order">Place Order</button>
     </form>
   </div>
 
-  <%- include('../partials/footer') %>
-
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <script>
     const form = document.getElementById('checkoutForm');
 
@@ -99,51 +84,59 @@
           totalAmount: <%= total %>
         };
 
-        const res = await fetch('/create-order', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
+        try {
+          const res = await fetch('/create-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
 
-        const data = await res.json();
+          const data = await res.json();
 
-        const options = {
-          key: data.key_id,
-          amount: data.amount,
-          currency: "INR",
-          name: "Bookify",
-          description: "Book Purchase",
-          order_id: data.order.id,
-          handler: async function (response) {
-            const verifyRes = await fetch('/verify-payment', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_signature: response.razorpay_signature,
-                formData: formData
-              })
-            });
+          if (!data.success) return alert('Failed to create Razorpay order');
 
-            const result = await verifyRes.json();
-            if (result.success) {
-              alert('Payment successful!');
-              window.location.href = '/order-success';
-            } else {
-              alert('Payment failed. Try again.');
+          const options = {
+            key: data.key_id,
+            amount: data.order.amount,
+            currency: "INR",
+            name: "Bookify",
+            description: "Book Purchase",
+            order_id: data.order.id,
+            handler: async function (response) {
+              const verifyRes = await fetch('/verify-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_signature: response.razorpay_signature,
+                  formData: formData
+                })
+              });
+
+              const result = await verifyRes.json();
+              if (result.success) {
+                alert("Payment Successful!");
+                window.location.href = "/order-success";
+              } else {
+                alert("Payment Failed");
+              }
+            },
+            theme: {
+              color: "#3399cc"
             }
-          }
-        };
+          };
 
-        const rzp = new Razorpay(options);
-        rzp.open();
+          const rzp = new Razorpay(options);
+          rzp.open();
+
+        } catch (err) {
+          console.error(err);
+          alert("Something went wrong");
+        }
       }
     });
   </script>
+  <%- include('../partials/footer') %>
 </body>
 </html>
