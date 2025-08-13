@@ -271,14 +271,14 @@ const postLogin = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.send('Incorrect password');
 
-    // ✅ Passport session setup
+    //  Passport session setup
     req.login(user, (err) => {
       if (err) {
         console.error("Passport login error:", err);
         return res.send("Login session failed.");
       }
 
-      // ✅ Optional: Also setting JWT if needed
+      //  Optional: Also setting JWT if needed
       const token = jwt.sign(
         { userId: user._id.toString() },
         String(process.env.JWT_SECRET),
@@ -305,7 +305,7 @@ const postSignup = async (req, res) => {
     const user = new User({ name, email, password });
     await user.save();
 
-    // ✅ Passport login after signup
+    //  Passport login after signup
     req.login(user, (err) => {
       if (err) {
         console.error("Signup Session Error:", err);

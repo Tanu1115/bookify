@@ -3,7 +3,7 @@ const Book = require('../models/Book');
 const Cart = require('../models/Cart');
 const Order = require('../models/Order');
 
-// 1️⃣ Add to Cart
+// 1️ Add to Cart
 const addToCart = async (req, res) => {
   if (!res.locals.user) return res.redirect('/auth/login');
 
@@ -33,7 +33,7 @@ const addToCart = async (req, res) => {
   }
 };
 
-// 2️⃣ View Cart Page
+// 2️ View Cart Page
 const getCartPage = async (req, res) => {
   if (!res.locals.user) return res.redirect('/auth/login');
 
@@ -49,7 +49,7 @@ const getCartPage = async (req, res) => {
   }
 };
 
-// 3️⃣ Show Checkout Page
+// 3️ Show Checkout Page
 const getCheckoutPage = async (req, res) => {
   if (!res.locals.user) return res.redirect('/auth/login');
 
@@ -65,7 +65,7 @@ const getCheckoutPage = async (req, res) => {
   }
 };
 
-// 4️⃣ Place Order
+// 4️ Place Order
 const placeOrder = async (req, res) => {
   if (!res.locals.user) return res.redirect('/auth/login');
 
@@ -95,7 +95,7 @@ const placeOrder = async (req, res) => {
 
     await order.save();
 
-    // ✅ Clear cart
+    //  Clear cart
     cart.items = [];
     await cart.save();
 
@@ -106,16 +106,12 @@ const placeOrder = async (req, res) => {
   }
 };
 
-// 5️⃣ Order Success Page
-const getOrderSuccessPage = (req, res) => {
-  res.render('user/ordersuccess');
-};
+5
 
-// ✅ Export
+// Export
 module.exports = {
   addToCart,
   getCartPage,
   getCheckoutPage,
-  placeOrder,
-  getOrderSuccessPage
+  placeOrder
 };

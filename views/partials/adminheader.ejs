@@ -7,13 +7,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
- <!-- Navbar -->
-  <nav class="admin-nav">
-    <div class="logo">📚 Bookify Admin</div>
-    <ul>
-      <li><a href="/admin/dashboard">Dashboard</a></li>
-      <li><a href="/admin/addBook">Add Book</a></li>
-      <li><a href="/admin/bookList">All Books</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-  </nav>
+
+  <!-- Navbar -->
+  <% if (admin) { %>
+    <!-- Login ke baad ka Navbar -->
+    <nav class="admin-nav">
+      <div class="logo">📚 Bookify Admin</div>
+      <ul>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+        <li><a href="/admin/addBook">Add Book</a></li>
+        <li><a href="/admin/bookList">All Books</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  <% } else { %>
+    <!-- Login se pehle ka Navbar -->
+    <nav class="admin-nav">
+      <div class="logo">📚 Bookify</div>
+      <ul>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
+      </ul>
+    </nav>
+  <% } %>
+
+  <!-- Page Content -->
+  <main>
+    <!-- Add Book form ya page ka content yahan aayega -->
+  </main>
+
+</body>
+</html>

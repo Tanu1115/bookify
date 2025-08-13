@@ -1,11 +1,18 @@
-const jwt = require('jsonwebtoken')
 const Book = require('../models/Book');
 
-// Add New Book
+// 🏠 Admin Home (Dashboard)
+const adminHome = (req, res) => {
+  res.render('admin/adminhome', { 
+    title: 'Admin Dashboard', 
+    admin: req.user 
+  });
+};
+
+// ➕ Add New Book
 const addBook = async (req, res) => {
   try {
     const { title, author, price, description, language, pages, genre } = req.body;
-    const imageUrl = req.file?.path;
+    const imageUrl = req.file?.path; // multer file path (Cloudinary or local)
 
     await Book.create({
       title,
@@ -24,17 +31,17 @@ const addBook = async (req, res) => {
   }
 };
 
-// Get All Books
+// 📚 Get All Books
 const getAllBooks = async (req, res) => {
   try {
     const books = await Book.find();
-    res.render('admin/bookList', { books });
+    res.render('admin/bookList', { books, admin: req.user });
   } catch (err) {
     res.status(500).send('Error loading books');
   }
 };
 
-// Delete Book
+// 🗑 Delete Book
 const deleteBook = async (req, res) => {
   try {
     await Book.findByIdAndDelete(req.params.id);
@@ -44,17 +51,20 @@ const deleteBook = async (req, res) => {
   }
 };
 
-// Get Edit Book Page
+// ✏ Get Edit Book Page
 const getEditBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
-    res.render('admin/editBook', { book });
+    if (!book) {
+      return res.status(404).send('Book not found');
+    }
+    res.render('admin/editBook', { book, admin: req.user });
   } catch (err) {
     res.status(500).send('Error loading edit form');
   }
 };
 
-// Update Book (Edit)
+// 💾 Update Book (Edit)
 const postEditBook = async (req, res) => {
   try {
     const { title, author, price, description, language, pages, genre } = req.body;
@@ -68,7 +78,7 @@ const postEditBook = async (req, res) => {
       genre,
     };
 
-    // If new image is uploaded
+    // Update cover image if a new file was uploaded
     if (req.file?.path) {
       updatedData.coverImage = req.file.path;
     }
@@ -81,11 +91,10 @@ const postEditBook = async (req, res) => {
 };
 
 module.exports = {
+  adminHome,
   addBook,
   getAllBooks,
   deleteBook,
   getEditBook,
   postEditBook
 };
-
-

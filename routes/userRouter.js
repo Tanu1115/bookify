@@ -27,7 +27,7 @@ router.post("/add-to-cart/:id", addToCart);
 router.get("/cart", getCartPage);
 router.get("/checkout", getCheckoutPage);
 router.post("/checkout", placeOrder);
-router.get("/order/success", getOrderSuccessPage);
+// router.get("/order/success", getOrderSuccessPage);
 
 
 // Contact Page

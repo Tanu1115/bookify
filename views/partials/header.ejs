@@ -3,31 +3,36 @@
 <title>Bookify | Home</title>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 <!-- Navbar -->
 <nav class="navbar">
-    <div class="logo">Bookify</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search by title, author, or category"/>
-      <button>
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-    <div class="nav-icons">
-      <!-- <p>🧠 User from EJS: <%= user ? user.name : "No user" %></p> -->
-        <% if (user) { %>
+  <div class="logo">Bookify</div>
+  <div class="search-bar">
+    <form action="/search" method="GET" autocomplete="off" style="position: relative;">
+      <input type="text" id="searchBox" name="q" placeholder="Search books..." />
+      <ul id="suggestionsList" class="suggestions"></ul>
+    <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+
+  <div class="nav-icons">
+    <% if (user) { %>
       <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
       <a href="/auth/logout" class="btn1">Logout</a>
       <a href="/auth/profile" class="signup"><i class="fas fa-user"></i> Profile</a>
-      <!-- <span>Hello, <%= user.name %></span> -->
-       <% } else { %>
-        <!-- <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a> -->
-        <a href="/auth/login" class="btn1">Login</a>
-        <a href="/auth/signup" class="signup"><i class="fas fa-user"></i> Sign Up</a>
-       <% } %>
-    </div>
-  </nav>
-   <nav class="navbar-2">
-    <a href="/" class="login">Home</a>
-    <a href="about" class="login">About Us</a>
-    <a href="contact" class="login">Contact us</a>
-   </nav>
+    <% } else { %>
+      <a href="/auth/login" class="btn1">Login</a>
+      <a href="/auth/signup" class="signup"><i class="fas fa-user"></i> Sign Up</a>
+    <% } %>
+  </div>
+</nav>
+
+<nav class="navbar-2">
+  <a href="/" class="login">Home</a>
+  <a href="/about" class="login">About Us</a>
+  <a href="/contact" class="login">Contact us</a>
+</nav>
+
+<!-- Link to the search script -->
+<script src="/search.js" defer></script> <!-- ✅ Remove 'public/' -->
+

@@ -56,10 +56,12 @@ const adminRouter = require('./routes/adminRouter');
 const paymentRouter = require('./routes/paymentRouter');  // ✅ Fixes the error
 
 
+
 app.use('/', userRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/', paymentRouter);
+
 
 // Start Server
 const PORT = process.env.PORT || 3000;
