@@ -203,8 +203,8 @@
 
 
 const User = require('../models/user');
-const Order = require('../models/order');         // ✅ your Order schema
-const Wishlist = require('../models/Cart');   // ✅ cart 
+const Order = require('../models/Order');         
+const Wishlist = require('../models/Cart');   
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
