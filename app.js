@@ -21,7 +21,7 @@ app.use(cookiesParser());
 // ✅ Session Middleware (required for passport)
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "yourSecretKey", // 🔐 Put this in .env
+    secret: process.env.SESSION_SECRET || "yourSecretKey", // 
     resave: false,
     saveUninitialized: false,
     rolling: true,

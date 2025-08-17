@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up | Bookify</title>
+  <link rel="stylesheet" href="/css/auth.css" />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-left slide-down">
+      <div class="form-box">
+      <button class="google-btn" onclick="window.location.href='/auth/google'">
+        <img src="/images/google-icon.png" alt="Google icon" />
+        Continue with Google
+      </button>
+
+      <h2>Create your <span class="brand">Bookify</span> account</h2>
+
+      <form action="/admin/adminSignup" method="POST" class="login-form">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" placeholder="Enter your full name" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Create a password" required />
+    
+        <button type="submit" class="login-btn">Sign Up</button>
+
+        <div class="signup-bottom">
+          Already have an account? <a href="/admin/login">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
