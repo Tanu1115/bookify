@@ -31,7 +31,7 @@ const addBook = async (req, res) => {
   }
 };
 
-// 📚 Get All Books
+//  Get All Books
 const getAllBooks = async (req, res) => {
   try {
     const books = await Book.find();
@@ -51,7 +51,7 @@ const deleteBook = async (req, res) => {
   }
 };
 
-// ✏ Get Edit Book Page
+//  Get Edit Book Page
 const getEditBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -64,7 +64,7 @@ const getEditBook = async (req, res) => {
   }
 };
 
-// 💾 Update Book (Edit)
+// Update Book (Edit)
 const postEditBook = async (req, res) => {
   try {
     const { title, author, price, description, language, pages, genre } = req.body;
