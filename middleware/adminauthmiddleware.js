@@ -14,7 +14,7 @@ exports.authenticateToken = (req, res, next) => {
       return res.redirect('/login');
     }
     req.user = user;
-    res.locals.admin = user;   // ✅ EJS ke liye available
+    res.locals.admin = user;   //  EJS ke liye available
     next();
   });
 };

@@ -54,10 +54,10 @@ exports.verifyPayment = async (req, res) => {
     .digest("hex");
 
   if (generated_signature === razorpay_signature) {
-    console.log("✅ Payment verified for:", formData.email);
+    console.log(" Payment verified for:", formData.email);
     return res.status(200).json({ success: true });
   } else {
-    console.log("❌ Payment verification failed");
+    console.log(" Payment verification failed");
     return res.status(400).json({ success: false });
   }
 };

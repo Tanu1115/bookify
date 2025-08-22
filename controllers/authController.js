@@ -421,10 +421,10 @@ const getProfile = async (req, res) => {
   try {
     const userId = req.user._id;
 
-    // ✅ Fetch total orders
+    //  Fetch total orders
     const ordersCount = await Order.countDocuments({ userId });
 
-    // ✅ Count of total items user added (sum of quantity)
+    //  Count of total items user added (sum of quantity)
     const orderCarts = await Order.aggregate([
       { $match: { userId } },
       { $unwind: '$items' },
@@ -438,13 +438,13 @@ const getProfile = async (req, res) => {
 
     const totalItems = orderCarts[0]?.totalItems || 0;
 
-    // ✅ User credit/wallet
+    // User credit/wallet
     const credit = req.user.wallet || 0;
 
-    // ✅ Fetch user details
+    // Fetch user details
     const userDetails = await User.findById(userId);
 
-    // ✅ Render the profile
+    //  Render the profile
     res.render('auth/profile', {
       user: userDetails,
       ordersCount,

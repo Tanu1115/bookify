@@ -1,6 +1,6 @@
 const Book = require('../models/Book');
 
-// 🏠 GET: Home Page - Show All Books
+//  GET: Home Page - Show All Books
 const getHomePage = async (req, res) => {
   try {
     const books = await Book.find({});
@@ -13,7 +13,7 @@ const getHomePage = async (req, res) => {
     res.status(500).send("Something went wrong");
   }
 }
-// 📖 GET: Book Details Page
+//  GET: Book Details Page
 const getbookdetails = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -23,7 +23,7 @@ const getbookdetails = async (req, res) => {
 
     res.render('user/bookdetails', {
       book,
-      user: res.locals.user  // ✅ Again pass user for navbar
+      user: res.locals.user  //  Again pass user for navbar
     });
 
   } catch (error) {
