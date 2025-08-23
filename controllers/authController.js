@@ -219,7 +219,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: '/auth/google/callback',
+      callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -252,9 +252,9 @@ passport.deserializeUser(async (id, done) => {
   done(null, user);
 });
 
-// ==============================
+
 // Authentication Controllers
-// ==============================
+
 
 const getLogin = (req, res) => {
   res.render('auth/login');
@@ -335,9 +335,9 @@ const logout = async (req, res) => {
   });
 };
 
-// ==============================
+
 // Forgot Password Flow
-// ==============================
+
 
 const getForgotPassword = (req, res) => {
   res.render('auth/forgot');
@@ -403,9 +403,9 @@ const postResetPassword = async (req, res) => {
   }
 };
 
-// ==============================
+
 // Google Login Trigger
-// ==============================
+
 
 const googleLogin = passport.authenticate('google', {
   scope: ['profile', 'email']
