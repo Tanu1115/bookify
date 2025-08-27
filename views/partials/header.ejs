@@ -7,14 +7,18 @@
 <!-- Navbar -->
 <nav class="navbar">
   <div class="logo">Bookify</div>
-  <div class="search-bar">
-    <form action="/search" method="GET" autocomplete="off" style="position: relative;">
-      <input type="text" id="searchBox" name="q" placeholder="Search books..." />
-      <ul id="suggestionsList" class="suggestions"></ul>
-    <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
+
+  <!-- ✅ Search box (always visible) -->
+  <div class="search-box">
+    <input type="text" placeholder="Search Books By name author title." />
   </div>
 
+  <!-- ✅ Hamburger button (only visible on mobile) -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- ✅ Navigation links -->
   <div class="nav-icons">
     <% if (user) { %>
       <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
@@ -27,12 +31,16 @@
   </div>
 </nav>
 
+<!-- ✅ Secondary Navbar -->
 <nav class="navbar-2">
   <a href="/" class="login">Home</a>
   <a href="/about" class="login">About Us</a>
-  <a href="/contact" class="login">Contact us</a>
+  <a href="/contact" class="login">Contact Us</a>
 </nav>
 
-<!-- Link to the search script -->
-<script src="/search.js" defer></script> <!-- ✅ Remove 'public/' -->
-
+<!-- ✅ Hamburger Script -->
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-icons').classList.toggle('active');
+  }
+</script>
