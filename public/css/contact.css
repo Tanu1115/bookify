@@ -44,7 +44,6 @@ body {
   width: 100%;
   padding: 12px 20px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  /* border-radius: 50px; */
   font-size: 18px;
   background: rgba(255, 255, 255, 0.9);
   color: #333;
@@ -290,19 +289,73 @@ body {
 }
 
 /* ✅ Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .search-box {
-    display: none;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .search-box {
+    display: none; /* hide search in mobile */
   }
   .contact-navbar {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
   }
+  .contact-navbar .logo {
+    font-size: 2rem;
+  }
+  .profile-icon i {
+    font-size: 1.8rem;
+  }
+
+  /* Contact Page */
+  .main-heading {
+    font-size: 24px;
+  }
+
+  /* Cards */
+  .contact-card-section {
+    grid-template-columns: 1fr 1fr; /* 2 cards per row on tablet */
+  }
+
+  /* Form Section */
+  .form-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Cards → single column */
+  .contact-card-section {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .contact-card {
+    padding: 1rem;
+  }
+
+  /* Form Section */
+  .form-section {
+    padding: 1rem;
+  }
+  .form-section input,
+  .form-section textarea {
+    font-size: 14px;
+  }
+
+  /* Chat Section */
+  .chat-section {
+    padding: 1rem;
+  }
+
+  /* Footer */
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .footer-section {
     text-align: center;
   }
   .footer-section h3::after {
@@ -311,12 +364,5 @@ body {
   }
   .social-icons {
     justify-content: center;
-  }
-}
-
-/* ✅ Force cards one below another in phone */
-@media (max-width: 600px) {
-  .contact-card-section {
-    grid-template-columns: 1fr !important;
   }
 }
