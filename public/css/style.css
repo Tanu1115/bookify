@@ -1329,6 +1329,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* ==== Sidebar ==== */
 .profile-sidebar {
   width: 280px;
   background-color: #fff;
@@ -1360,6 +1361,7 @@ body {
   color: #777;
 }
 
+/* ==== Nav ==== */
 .profile-nav {
   display: flex;
   flex-direction: column;
@@ -1385,6 +1387,7 @@ body {
   color: red;
 }
 
+/* ==== Main Content ==== */
 .profile-main {
   flex: 1;
   background-color: #fff;
@@ -1402,6 +1405,7 @@ body {
   color: #666;
 }
 
+/* ==== Stats ==== */
 .profile-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1426,6 +1430,8 @@ body {
   margin-top: 0.5rem;
   color: #777;
 }
+
+/* ==== Suggestions ==== */
 .suggestions {
   list-style: none;
   position: absolute;
@@ -1452,4 +1458,116 @@ body {
 
 .suggestions li:hover {
   background-color: #f0f0f0;
+}
+
+/* ==================== Responsive ==================== */
+
+/* Tablets & smaller laptops */
+@media (max-width: 992px) {
+  .profile-wrapper {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .profile-sidebar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .profile-user {
+    text-align: left;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .profile-user img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profile-user h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .profile-user p {
+    font-size: 12px;
+  }
+
+  .profile-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .profile-nav a {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+
+  .profile-main {
+    padding: 1.5rem;
+  }
+
+  .welcome-banner h1 {
+    font-size: 22px;
+  }
+
+  .profile-stats {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card h3 {
+    font-size: 20px;
+  }
+}
+
+/* Phones */
+@media (max-width: 576px) {
+  .profile-user {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  .profile-user img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .profile-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-nav a {
+    flex: 1 1 45%;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .profile-main {
+    padding: 1rem;
+  }
+
+  .welcome-banner h1 {
+    font-size: 20px;
+  }
+
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
 }
