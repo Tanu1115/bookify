@@ -4,20 +4,9 @@
   <link rel="stylesheet" href="/css/contact.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <title>Contact Us | Bookify</title>
+  <%- include('../partials/header') %>
 </head>
 <body>
-
-  <!-- ✅ Minimal Navbar -->
-  <nav class="contact-navbar">
-    <div class="logo">Bookify</div>
-    <div class="search-box">
-      <input type="text" placeholder="Search for books..." />
-    </div>
-    <div class="profile-icon">
-     <a href="/auth/profile"><i class="fas fa-user-circle"></i></a> 
-    </div>
-  </nav>
-
   <!-- ✅ Contact Page Container -->
   <div class="contact-page-container">
 
@@ -80,6 +69,6 @@
     </div>
 
   </div>
-  
+  <%- include('../partials/footer') %>
 </body>
 </html>

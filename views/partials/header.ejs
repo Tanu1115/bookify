@@ -4,21 +4,18 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<!-- Navbar -->
+<!-- Top Navbar -->
 <nav class="navbar">
   <div class="logo">Bookify</div>
 
-  <!-- ✅ Search box (always visible) -->
-  <div class="search-box">
-    <input type="text" placeholder="Search Books By name author title." />
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <form action="/search" method="GET" autocomplete="off" style="position: relative;">
+      <input type="text" id="searchBox" name="q" placeholder="Search books..." />
+    </form>
   </div>
 
-  <!-- ✅ Hamburger button (only visible on mobile) -->
-  <div class="hamburger" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-  </div>
-
-  <!-- ✅ Navigation links -->
+  <!-- Nav Icons (Desktop Only) -->
   <div class="nav-icons">
     <% if (user) { %>
       <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
@@ -29,18 +26,40 @@
       <a href="/auth/signup" class="signup"><i class="fas fa-user"></i> Sign Up</a>
     <% } %>
   </div>
+
+  <!-- Hamburger Icon (Mobile Only) -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
 </nav>
 
-<!-- ✅ Secondary Navbar -->
+<!-- ===== SECOND NAVBAR (Desktop Only) ===== -->
 <nav class="navbar-2">
   <a href="/" class="login">Home</a>
   <a href="/about" class="login">About Us</a>
   <a href="/contact" class="login">Contact Us</a>
 </nav>
 
-<!-- ✅ Hamburger Script -->
+<!-- ===== MOBILE SIDEBAR MENU ===== -->
+<nav class="navbar-sidebar" id="mobileMenu">
+  <% if (user) { %>
+    <a href="/cart"><i class="fas fa-cart-shopping"></i> Cart</a>
+    <a href="/auth/profile"><i class="fas fa-user"></i> Profile</a>
+    <a href="/auth/logout">Logout</a>
+  <% } else { %>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/signup">Sign Up</a>
+  <% } %>
+
+  <hr/>
+
+  <a href="/">Home</a>
+  <a href="/about">About Us</a>
+  <a href="/contact">Contact Us</a>
+</nav>
+
 <script>
   function toggleMenu() {
-    document.querySelector('.nav-icons').classList.toggle('active');
+    document.getElementById("mobileMenu").classList.toggle("active");
   }
 </script>

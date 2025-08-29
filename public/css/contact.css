@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 12px 20px;
   border-bottom: 1px solid #ddd;
   position: sticky;
@@ -26,32 +26,41 @@ body {
 }
 
 .contact-navbar .logo {
-  font-size: 1.5rem;
+  font-size: 35px;
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.contact-navbar .logo:hover {
+  transform: scale(1.1);
+  color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .search-box input {
   padding: 8px 12px;
   border-radius: 20px;
   border: 1px solid #ccc;
-  width: 250px;
-  transition: 0.3s ease;
+  width: 450px;
+  transition: all 0.3s ease;
 }
 
 .search-box input:focus {
-  border-color: #007bff;
+  border-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   outline: none;
+  transform: scale(1.05);
 }
 
 .profile-icon i {
   font-size: 1.8rem;
-  color: #007bff;
-  transition: 0.3s;
+  color: white;
+  transition: transform 0.3s, color 0.3s;
+  cursor: pointer;
 }
 
 .profile-icon i:hover {
-  color: #0056b3;
+  color: gray;
+  transform: scale(1.2);
 }
 
 /* ✅ Page Container */
@@ -82,17 +91,18 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .contact-card h2 {
   margin-bottom: 10px;
   font-size: 1.3rem;
-  color: #007bff;
+  color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .contact-card p {
@@ -105,15 +115,16 @@ body {
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  background: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .contact-card button:hover {
-  background: #0056b3;
+  background: gray;
+  transform: scale(1.05);
 }
 
 /* ✅ Form Section */
@@ -123,6 +134,11 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+
+.form-section:hover {
+  transform: scale(1.01);
 }
 
 .form-section h2 {
@@ -143,13 +159,14 @@ body {
   border-radius: 8px;
   border: 1px solid #ccc;
   margin-bottom: 15px;
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 
 .form-section input:focus,
 .form-section textarea:focus {
   border-color: #007bff;
   outline: none;
+  transform: scale(1.02);
 }
 
 .form-section button {
@@ -157,14 +174,16 @@ body {
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .form-section button:hover {
-  background: #0056b3;
+  background: gray;
+  transform: scale(1.05);
 }
 
 /* ✅ Chat Section */
@@ -174,11 +193,16 @@ body {
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.chat-section:hover {
+  transform: scale(1.01);
 }
 
 .chat-section h2 {
   margin-bottom: 10px;
-  color: #007bff;
+  color: gray;
 }
 
 .chat-section p {
@@ -190,25 +214,46 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  background: #28a745;
+  background: rgb(56, 2, 2);
   color: #fff;
   cursor: pointer;
   font-size: 0.95rem;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .chat-section button:hover {
-  background: #1e7e34;
+  background: gray;
+  transform: scale(1.05);
 }
 
 /* ✅ Responsive */
 @media (max-width: 768px) {
   .contact-navbar {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    padding: 16px 15px;
+  }
+
+  .contact-navbar .logo {
+    font-size: 1.8rem;
+  }
+
+  .search-box {
+    width: 100%;
   }
 
   .search-box input {
     width: 100%;
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+
+  .profile-icon i {
+    font-size: 2rem;
+  }
+
+  .contact-card-section {
+    grid-template-columns: 1fr;
   }
 
   .main-heading {
@@ -217,17 +262,38 @@ body {
 }
 
 @media (max-width: 480px) {
-  .contact-card h2 {
-    font-size: 1.1rem;
+  .contact-navbar {
+    padding: 14px 12px;
   }
+
+  .contact-navbar .logo {
+    font-size: 1.6rem;
+  }
+
+  .search-box input {
+    font-size: 0.95rem;
+    padding: 9px 12px;
+  }
+
+  .contact-card h2 {
+    font-size: 1.2rem;
+  }
+
   .contact-card p {
     font-size: 0.9rem;
   }
+
+  .contact-card button,
   .form-section button,
   .chat-section button {
     font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+
+  .form-section,
+  .chat-section {
+    padding: 18px;
   }
 }
-
   
  
