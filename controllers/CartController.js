@@ -106,12 +106,37 @@ const placeOrder = async (req, res) => {
   }
 };
 
-5
+// 5️ Remove from Cart
+const removeFromCart = async (req, res) => {
+  if (!res.locals.user) return res.redirect('/auth/login');
+
+  const userId = res.locals.user._id;
+  const bookId = req.params.id;
+
+  try {
+    let cart = await Cart.findOne({ userId });
+
+    if (!cart) {
+      return res.redirect('/cart');
+    }
+
+    // Filter out the item to remove
+    cart.items = cart.items.filter(item => !item.bookId.equals(bookId));
+
+    await cart.save();
+    res.redirect('/cart');
+  } catch (error) {
+    console.error("Remove from cart error:", error.message);
+    res.status(500).send("Failed to remove item.");
+  }
+};
+
 
 // Export
 module.exports = {
   addToCart,
   getCartPage,
   getCheckoutPage,
-  placeOrder
+  placeOrder,
+  removeFromCart
 };

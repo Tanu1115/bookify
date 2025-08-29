@@ -16,6 +16,7 @@ const {
   getCartPage,
   getCheckoutPage,
   placeOrder,
+  removeFromCart,
   getOrderSuccessPage,
   createRazorpayOrder,
   verifyPayment,
@@ -27,6 +28,8 @@ router.post("/add-to-cart/:id", addToCart);
 router.get("/cart", getCartPage);
 router.get("/checkout", getCheckoutPage);
 router.post("/checkout", placeOrder);
+router.get("/cart/remove/:id", removeFromCart);
+
 // router.get("/order/success", getOrderSuccessPage);
 
 

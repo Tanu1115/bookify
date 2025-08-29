@@ -30,10 +30,8 @@
               <p>Price: ₹<%= item.bookId.price %></p>
 
               <p><strong>Subtotal:</strong> ₹<%= itemTotal %></p>
+              <a href="/cart/remove/<%= item.bookId._id %>" class="remove-btn">Remove</a>
 
-              <form action="/cart/remove/<%= item.bookId._id %>" method="POST">
-                <button class="remove-btn" type="submit">Remove</button>
-              </form>
             </div>
           </div>
         <% }) %>

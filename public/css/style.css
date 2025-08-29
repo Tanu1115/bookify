@@ -11,6 +11,7 @@ body {
 }
 /* main navabr */
 /* ===== NAVBAR BASE ===== */
+/* ===== TOP NAVBAR ===== */
 .navbar {
   position: sticky;
   top: 0;
@@ -28,7 +29,7 @@ body {
 
 /* Logo */
 .navbar .logo {
-  font-size: 1.6rem;
+  font-size: 35px;
   font-weight: bold;
   color: #764ba2;
   transition: 0.3s;
@@ -108,7 +109,7 @@ body {
   transform: rotate(90deg);
 }
 
-/* ===== SECOND NAVBAR ===== */
+/* ===== SECOND NAVBAR (Desktop Only) ===== */
 .navbar-2 {
   display: flex;
   justify-content: center;
@@ -129,18 +130,18 @@ body {
   transform: scale(1.1);
 }
 
-/* ===== MOBILE MENU (SIDEBAR FOR LOGIN/SIGNUP ETC.) ===== */
+/* ===== MOBILE SIDEBAR (Hamburger Menu) ===== */
 #mobileMenu {
   position: fixed;
   top: 0;
-  right: -250px;
+  right: -260px;
   height: 100%;
-  width: 250px;
+  width: 240px;
   background: #fff;
   box-shadow: -2px 0 8px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  padding: 60px 20px;
+  padding: 70px 20px 20px;
   transition: right 0.3s ease;
   z-index: 2000;
 }
@@ -149,11 +150,17 @@ body {
   text-decoration: none;
   color: #333;
   border-bottom: 1px solid #eee;
+  font-size: 16px;
   transition: 0.3s;
 }
 #mobileMenu a:hover {
   color: #764ba2;
   padding-left: 10px;
+}
+#mobileMenu hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #eee;
 }
 #mobileMenu.active {
   right: 0;
@@ -179,15 +186,9 @@ body {
     color: #764ba2;
   }
 
-  /* Second navbar mobile style */
+  /* Second navbar will not show on mobile (moved to sidebar) */
   .navbar-2 {
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 0;
-  }
-  .navbar-2 a {
-    margin: 10px 0;
-    font-size: 1rem;
+    display: none;
   }
 }
 
@@ -326,7 +327,7 @@ body {
     z-index: 1;
   }
 
-  /* Professional Book Cards */
+  /* Cards */
   .book-card {
     background: white;
     border-radius: 10px;
@@ -874,6 +875,7 @@ body {
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
+    list-style: none;
   }
   
   .remove-btn:hover {
@@ -1320,6 +1322,7 @@ body {
   }
 }
 /* profile */
+/* ===== PROFILE PAGE LAYOUT ===== */
 .profile-wrapper {
   display: flex;
   gap: 2rem;
@@ -1327,15 +1330,17 @@ body {
   background-color: #f9f9f9;
   min-height: 80vh;
   font-family: 'Poppins', sans-serif;
+  flex-wrap: wrap; /* mobile ke liye content wrap */
 }
 
-/* ==== Sidebar ==== */
+/* ===== SIDEBAR ===== */
 .profile-sidebar {
   width: 280px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 1.5rem;
+  flex-shrink: 0;
 }
 
 .profile-user {
@@ -1361,7 +1366,6 @@ body {
   color: #777;
 }
 
-/* ==== Nav ==== */
 .profile-nav {
   display: flex;
   flex-direction: column;
@@ -1387,13 +1391,14 @@ body {
   color: red;
 }
 
-/* ==== Main Content ==== */
+/* ===== MAIN CONTENT ===== */
 .profile-main {
   flex: 1;
   background-color: #fff;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 250px;
 }
 
 .welcome-banner h1 {
@@ -1405,7 +1410,6 @@ body {
   color: #666;
 }
 
-/* ==== Stats ==== */
 .profile-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1431,7 +1435,7 @@ body {
   color: #777;
 }
 
-/* ==== Suggestions ==== */
+/* ===== SEARCH SUGGESTIONS (NO CHANGE) ===== */
 .suggestions {
   list-style: none;
   position: absolute;
@@ -1460,114 +1464,51 @@ body {
   background-color: #f0f0f0;
 }
 
-/* ==================== Responsive ==================== */
-
-/* Tablets & smaller laptops */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
   .profile-wrapper {
     flex-direction: column;
     padding: 1rem;
-    gap: 1.5rem;
   }
 
   .profile-sidebar {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-  }
-
-  .profile-user {
-    text-align: left;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .profile-user img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .profile-user h2 {
-    font-size: 18px;
-    margin: 0;
-  }
-
-  .profile-user p {
-    font-size: 12px;
-  }
-
-  .profile-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-left: auto;
-  }
-
-  .profile-nav a {
-    font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 6px;
+    margin-bottom: 1.5rem;
   }
 
   .profile-main {
-    padding: 1.5rem;
+    width: 100%;
   }
 
   .welcome-banner h1 {
     font-size: 22px;
   }
 
-  .profile-stats {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
-  }
-
-  .stat-card {
-    padding: 1rem;
-  }
-
-  .stat-card h3 {
-    font-size: 20px;
-  }
-}
-
-/* Phones */
-@media (max-width: 576px) {
-  .profile-user {
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-  }
-
   .profile-user img {
     width: 70px;
     height: 70px;
   }
+}
 
-  .profile-nav {
-    width: 100%;
-    justify-content: center;
+@media (max-width: 576px) {
+  .profile-wrapper {
+    gap: 1rem;
   }
 
-  .profile-nav a {
-    flex: 1 1 45%;
-    text-align: center;
-    font-size: 13px;
+  .profile-sidebar {
+    padding: 1rem;
   }
 
   .profile-main {
     padding: 1rem;
   }
 
-  .welcome-banner h1 {
+  .stat-card h3 {
     font-size: 20px;
   }
 
-  .profile-stats {
-    grid-template-columns: 1fr;
+  .profile-nav a {
+    font-size: 0.9rem;
+    padding: 8px;
   }
 }
